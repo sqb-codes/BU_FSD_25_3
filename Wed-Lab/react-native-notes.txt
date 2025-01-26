@@ -1,0 +1,17 @@
+Getting started with React Native
+
+1. Install expo-go app in mobile phone
+2. npm install expo-cli --global
+3. expo init my-first-app
+4. Choose template - blank
+5. cd my-first-app
+6. npm start
+
+For permission issue in windows
+Open powershell as admin
+Type - Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+Select yes to all - Press A
+
+
+For Safe Area View
+npm install react-native-safe-area-context
