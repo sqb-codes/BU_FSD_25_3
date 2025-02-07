@@ -1,0 +1,14 @@
+Getting started with React Native
+
+1. Install expo-go app in mobile phone
+2. npm install expo --global
+3. npx create-expo-app my-first-app --template blank
+   alternative - expo init my-first-app  (deprecated)
+4. Skip - Choose template - blank
+5. cd my-first-app
+6. npx expo start
+
+For permission issue in windows
+Open powershell as admin
+Type - Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+Select yes to all - Press A
