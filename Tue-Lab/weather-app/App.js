@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // npm install @react-navigation/native
 import { NavigationContainer } from '@react-navigation/native';
 import { SearchScreen } from './components/search/SearchScreen';
+import { ForecastScreen } from './components/forecast/ForecastScreen';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -21,6 +22,7 @@ export default function App() {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen}/>
         <Tab.Screen name="Search" component={SearchScreen}/>
+        <Tab.Screen name="Forecast" component={ForecastScreen}/>
       </Tab.Navigator>
     </NavigationContainer>
 
