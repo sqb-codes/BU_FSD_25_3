@@ -1,0 +1,33 @@
+1. Project setup
+npx create-expo-app@latest e-comm --template blank
+
+2. Change dir
+cd e-comm
+
+Features and Screens
+1. Splash Screen 
+- Login Screen - Authenticate using Mobile Number with OTP
+If Login success
+- Home Screen
+- Latest and trending products a
+- Drawer Navigation - Main Navigation
+- Search Bar
+Else If Login Failed
+- Back to Login Screen
+
+2. Search Result Screen
+- Show 10 products at a time, when scroll load next 10 products
+- Filters
+- Add to cart button with each product
+- Each product will be clickable to open details
+
+3. Product details Screen
+
+4. Cart Screen
+- show all products in cart
+- increase decrease quantity for each product
+- checkout product
+
+5.Checkout Screen
+- Payment API - Razorpay/Stripe
+- Email API - Mail user that product successfully purchased
