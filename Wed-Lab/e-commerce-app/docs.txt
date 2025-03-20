@@ -1,0 +1,43 @@
+E-commerce Application
+
+Screens
+- Login
+  - Mobile number verification (OTP)
+- Home
+  - Latest Products (Data stored in MongoDB)
+  - Trending Products
+  - Search Bar
+  - Drawer Menu
+- Search and Result
+  - Infinite scroll to load 10 Products at a time
+  - Filter Options
+  - Add to cart button with each product
+- Product Detail
+  - show product details like description, rating, review
+  - Add to cart
+- Cart
+  - List of all products added in cart
+  - Inc/Dec quantity of product
+  - Delete product from cart
+  - Total price calculation
+  - Checkout button
+- Checkout
+  - Payment Gateway (Stripe/Razorpay) API
+  - On Success - Mail to user
+
+Tech Stack
+FrontEnd - React Native + Redux/Zustand
+BackEnd - Express + MongoDB
+Authentication - Firebase / Twilio
+Payment Gateway - Razorpay / Stripe
+Email - Nodemailer
+Testing - Jest
+
+Project setup
+
+Front End
+1. npx create-expo-app@latest app --template blank
+
+Back End
+1. npm init -y
+2. npm install express cors twilio dotenv
