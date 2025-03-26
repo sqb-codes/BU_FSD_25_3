@@ -16,8 +16,6 @@ const client = twilio(accountSid, authToken);
 
 app.post('/send-otp', async(req, res) => {
     const { phone } = req.body;
-    console.log("Body :",req.body);
-    console.log("Phone no :",phone);
     try {
         const verification = await client.verify
         .v2.services(serviceSid)
@@ -32,7 +30,26 @@ app.post('/send-otp', async(req, res) => {
     }
 });
 
-// app.post('/verify-otp')
+
+app.post('/verify-otp', async (req, res) => {
+    const {phone, code} = req.body;
+    try {
+        const verificationCheck = await client.verify
+        .v2.services(serviceSid)
+        .verificationChecks.create({
+            to: `+91${phone}`,
+            code: code
+        });
+        if(verificationCheck.status === 'approved') {
+            res.status(200).send({message:"Phone no verified"});
+        } else {
+            res.status(400).send({message:"Invalid OTP"});
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 
 const PORT = 4545;
 app.listen(PORT, () => console.log("Server started..."));
