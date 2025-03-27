@@ -1,0 +1,67 @@
+Chat Application
+
+Screens
+- Splash Screen
+- Registration - With Google/Apple / Phone no
+- Login
+- Home Screen
+  - Tab-1 : Chat Screen
+  - Tab-2 : Contact Screen
+  - Tab-3 : Call/Missed call Screen
+- Message
+- Push Notifications
+
+Project Setup
+1. npx create-expo-app@latest chat-app --template blank
+2. cd chat-app
+3. npm start
+
+Tailwind Setup
+1. npm install nativewind@4.0.1
+2. npx tailwindcss init
+3. Paste in tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,jsx,tx,tsx}",
+    "./components/**/*.{js,jsx,tx,tsx}"
+  ],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+4. Edit babel.config.js
+module.exports = function(api) {
+    api.cache(true);
+    return {
+        presets: ['babel-preset-expo'],
+        plugins: [
+            'nativewind/babel',
+            'react-native-animated/plugin'
+        ]
+    }
+}
+
+5. create a global.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+6. npm install react-native-reanimated
+
+
+Setup SignIn and SignUp
+
+Setup Firebase
+1. Open firebase console
+2. Create new project
+3. Create new web app
+4. npm install firebase 
+5. copy firebase configurations to firebase.js
+6. Setup Authentication
+7. Setup Storage
+8. Setup Firestore
+
