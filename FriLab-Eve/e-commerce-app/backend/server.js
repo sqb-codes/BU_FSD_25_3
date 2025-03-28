@@ -29,6 +29,27 @@ app.post("/send-otp", async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
+});
+
+// Verify OTP
+app.post("/verify-otp", async(request, response) => {
+    const {phone, otp} = request.body;
+    try {
+        const verification = await client
+        .verify
+        .v2
+        .services(serviceSid).verificationChecks.create({
+            to: `+91${phone}`,
+            code: otp
+        })
+        if(verification.status === "approved") {
+            response.status(200).send({message: "Phone number verified"})
+        } else {
+            response.status(400).send({message: "Invalid OTP"})
+        }
+    } catch (error) {
+        response.status(500).send(error)
+    }
 })
 
 const PORT = 7878;
