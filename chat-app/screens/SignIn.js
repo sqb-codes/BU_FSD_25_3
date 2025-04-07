@@ -1,9 +1,20 @@
 import { useState } from "react";
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { signIn, signUp } from "../firebase";
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginMode, setLoginMode] = useState("signUp");
+
+    async function handlePress(params) {
+        if(loginMode === "signUp") {
+            await signUp(email, password);
+        }
+        if(loginMode === "signIn") {
+            await signIn(email, password);
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -28,18 +39,31 @@ export default function SignIn() {
                     value={password}
                     onChangeText={setPassword}
                     style={styles.textBox}
+                    secureTextEntry={true}
                 />
             </View>
             <View>
                 <Button
-                    title="Sign In"
+                    title={loginMode === "signUp" ? "Sign Up" : "Sign In"}
                     disabled={!password || !email}
+                    onPress={handlePress}
                 />
             </View>
 
-            <View>
-                <Text>Already have an account?</Text>
-            </View>
+            <TouchableOpacity 
+                onPress={() => 
+                    loginMode === "signUp" ? setLoginMode("signIn") : setLoginMode("signUp")
+                }>
+                <View>
+                    <Text>
+                        {
+                            loginMode === "signUp"
+                            ? "Already have an account? Sign In"
+                            : "Don't have account? Sign Up"
+                        }
+                    </Text>
+                </View>
+            </TouchableOpacity>
         </View>
     )
 }
