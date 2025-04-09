@@ -9,6 +9,8 @@ const PRODUCTS = [...Array(100).keys()].map((i) => ({
     price: ((i + 1) * 10).toFixed(2)
 }));
 
+// https://fakestoreapi.com/products
+
 export const HomeScreen = () => {
     const trending = PRODUCTS.slice(0,6);
     const top_deals = PRODUCTS.slice(10,14);

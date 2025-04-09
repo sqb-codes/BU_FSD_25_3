@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
 export const LoginScreen = () => {
 
@@ -9,11 +10,12 @@ export const LoginScreen = () => {
     const [phone, setPhone] = useState("");
     const [otp, setOtp] = useState("");
     const [otpSent, setOtpSent] = useState(false);
+
+    const navigation = useNavigation();
     
     const sendOTP =  async () => {
         try {
             const res = axios.post(SEND_OTP_URL, {phone});
-            setPhone("");
             if(!res) {
                 throw new Error("");
             }
@@ -28,7 +30,16 @@ export const LoginScreen = () => {
     const verifyOTP =  async () => {
         try {
             const response = await axios.post(VERIFY_OTP_URL, {phone, otp});
-            Alert.alert("OTP Verified");
+            // Alert.alert("OTP Verified");
+            Alert.alert(
+                "Success", "OTP Verified Successfully",
+                [
+                    {
+                        text: "OK",
+                        onPress: () => navigation.replace("Home")
+                    }
+                ]
+            )
         } catch (error) {
             console.log("Error while verifying OTP",error);
         }
